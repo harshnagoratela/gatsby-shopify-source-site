@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
+import { ChevronLeft } from 'react-feather'
 
 import PageHeader from '../components/PageHeader'
 import Layout from '../components/Layout'
@@ -21,7 +22,7 @@ const ProductPage = ({ data }) => {
             >
                 <div className="container skinny">
                     <Link className="SinglePost--BackButton" to="/services/">
-                        BACK
+                        <ChevronLeft /> BACK
                     </Link>
                     <div className="SinglePost--Content relative">
                         {product.title && (
