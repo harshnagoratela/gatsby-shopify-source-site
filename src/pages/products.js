@@ -5,11 +5,11 @@ import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import ProductGrid from '../components/ProductGrid'
 
-const ServicesPage = () => (
+const ProductPage = () => (
   <Layout>
     <PageHeader
-      title="Leverage technology effectively"
-      subtitle="Get started *today* with Ecomloop Services, designed to begin quickly & identify actionable next steps"
+      title="Products"
+      subtitle="List of all Products"
     />
     <section className="section">
       <div className="container">
@@ -20,4 +20,4 @@ const ServicesPage = () => (
   </Layout>
 )
 
-export default ServicesPage
+export default ProductPage
