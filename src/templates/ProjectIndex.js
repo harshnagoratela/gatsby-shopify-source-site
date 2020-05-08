@@ -98,12 +98,12 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
           frontmatter {
             title
+            excerpt: client
             date(formatString: "dddd MMMM DD, YYYY")
             categories {
               category
