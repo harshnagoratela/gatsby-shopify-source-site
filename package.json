@@ -5,7 +5,7 @@
   "version": "2.4.3",
   "repository": {
     "type": "git",
-    "url": "https://github.comecomloop/ecomloop"
+    "url": "https://github.com/ecomloop/ecomloop.github.io"
   },
   "dependencies": {
     "@fs/gatsby-plugin-drive": "^0.2.1",
@@ -45,7 +45,7 @@
     "modern-normalize": "^0.5.0",
     "netlify-cms-app": "^2.11.32",
     "netlify-cms-media-library-uploadcare": "^0.5.5",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
