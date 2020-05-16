@@ -6,10 +6,10 @@ import PageHeader from '../components/PageHeader'
 import ProductGrid from '../components/ProductGrid'
 
 const ServicesPage = () => (
-  <Layout title="Services">
+  <Layout title="ecommcerce agency services">
     <PageHeader
-      title="ecommerce agency services"
-      subtitle="ecommerce agencey services are designed to get started right away and identify actionable next steps"
+      title="ecommcerce agency services"
+      subtitle="ecommerce agency services are designed to get started right away with a plan fit for your business"
       backgroundImage='../images/ecoomloop_clock_leverage.png'
     />
     <section className="section">
