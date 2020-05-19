@@ -26,18 +26,18 @@ const ProductPage = ({ data }) => {
                         <ChevronLeft /> BACK
                     </Link>
                     <div className="SingleService--Content relative">
+
+                        <ProductGalleryThumbnails productimages={product.images} />
+
                         {product.title && (
                             <h1 className="SingleService--Title" itemProp="title">
                                 {product.title}
                             </h1>
                         )}
 
-                        <ProductGalleryThumbnails productimages={product.images} />
-
                         <div className="SingleService--InnerContent">
-                        <ProductForm product={product} />
+                            <ProductForm product={product} />
                             <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-
                         </div>
 
                         <div className="SingleService--Pagination">
