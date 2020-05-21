@@ -52,7 +52,7 @@ const ProductPage = ({ data }) => {
                             {thisEdge && thisEdge.next && thisEdge.next.handle && (
                                 <Link
                                     className="SingleService--Pagination--Link next"
-                                    to={`/service/${thisEdge.next.handle}`}
+                                    to={`/solution/${thisEdge.next.handle}`}
                                 >
                                     Next Service
                                 </Link>

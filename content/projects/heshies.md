@@ -13,7 +13,7 @@ tags:
  -
 date: 2019-02-01
 section1: >-
-  ## Website  development for cannabis brand
+  ## Website development for cannabis brand
 
   This cannabis brand needed a website to supply info to dispensary partners
 
@@ -30,5 +30,5 @@ gallery:
 
 meta:
   description: This cannabis brand needed a website to supply info to dispensary partners
-  title: Website  development for cannabis brand
+  title: Website development for cannabis brand
 ---
