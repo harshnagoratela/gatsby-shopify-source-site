@@ -8,7 +8,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'ecomloop',
-    description: 'We help uncommon businesses succeed in the digital economy',
+    description: 'digital commerce solutions for uncommon businesses',
     siteUrl: 'https://ecomloop.com'
   },
   plugins: [
@@ -29,7 +29,7 @@ module.exports = {
     options: {
       folderId: '1ZUcbDFOxg7UEjyy0f-xmqf7ZGgUkM4rE',
       keyFile: `${__dirname}/client_secret.json`,
-      destination: `${__dirname}/static/images`,
+      destination: `${__dirname}/content/images`,
       exportGDocs: false,
       exportMimeType: ''
       }

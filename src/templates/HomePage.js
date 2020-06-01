@@ -31,7 +31,7 @@ export const HomePageTemplate = ({ title, subtitle, featuredImage, body, accordi
             large
             title={title}
             subtitle={subtitle}
-            backgroundImage={featuredImage}
+            backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
         />
 
         <section className="section">
@@ -120,7 +120,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        featuredImage
+        featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         accordion {
           title
           content
@@ -145,7 +151,13 @@ export const pageQuery = graphql`
             categories {
               category
             }
-            featuredImage
+            featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           }
         }
       }
@@ -184,7 +196,13 @@ export const pageQuery = graphql`
             categories {
               category
             }
-            featuredImage
+            featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           }
         }
       }

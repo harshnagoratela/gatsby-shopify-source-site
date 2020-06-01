@@ -1,0 +1,32 @@
+---
+template: ProjectPage
+slug: skystone-marketing
+client: Skystone Marketing
+url: https://skystonemarketing.com/
+title:
+featuredImage: ../images/skystone-marketing_01.jpg
+subtitle:
+tags:
+ -
+ -
+ -
+ -
+date: 2019-08-01
+section1: >-
+  ##
+
+section2:
+
+accordion:
+  - description: Klaviyo
+    title: Platforms & technologies
+
+gallery:
+  - alt:
+    image: ../images/
+    title:
+
+meta:
+  description:
+  title:
+---

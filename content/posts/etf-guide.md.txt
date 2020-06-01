@@ -1,0 +1,32 @@
+---
+template: ProjectPage
+slug: etf-guide
+client: ETF Guide
+url: https://etfguide.com/
+title:
+featuredImage: ../images/CLIENTNAME_01.jpg
+subtitle:
+tags:
+ -
+ -
+ -
+ -
+date: 2019-04-01
+section1: >-
+  ##
+
+section2:
+
+accordion:
+  - description: Wordpress, Mailchimp
+    title: Platforms & technologies
+
+gallery:
+  - alt:
+    image: ../images/
+    title:
+
+meta:
+  description:
+  title:
+---

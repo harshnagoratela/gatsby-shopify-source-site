@@ -1,0 +1,32 @@
+---
+template: ProjectPage
+slug: nantucket-brand
+client: Nantucket Brand
+url: https://nantucketbrand.com/
+title:
+featuredImage: ../images/nantucket-brand_01.jpg
+subtitle:
+tags:
+ -
+ -
+ -
+ -
+date: 2018-11-01
+section1: >-
+  ##
+
+section2:
+
+accordion:
+  - description: Shopify, Mailchimp
+    title: Platforms & technologies
+
+gallery:
+  - alt:
+    image: ../images/
+    title:
+
+meta:
+  description:
+  title:
+---

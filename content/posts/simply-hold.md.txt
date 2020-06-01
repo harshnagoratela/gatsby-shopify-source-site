@@ -1,0 +1,32 @@
+---
+template: ProjectPage
+slug: simply-hold
+client: Simply hold
+url: https://simplyhold.com/
+title:
+featuredImage: ../images/simply-hold_01.jpg
+subtitle:
+tags:
+ -
+ -
+ -
+ -
+date: 2019-05-01
+section1: >-
+  ##
+
+section2:
+
+accordion:
+  - description: Shopify, Mailchimp
+    title: Platforms & technologies
+
+gallery:
+  - alt:
+    image: ../images/
+    title:
+
+meta:
+  description:
+  title:
+---

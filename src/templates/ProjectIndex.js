@@ -35,7 +35,7 @@ export const ProjectIndexTemplate = ({
           <PageHeader
             title={title}
             subtitle={subtitle}
-            backgroundImage={featuredImage}
+            backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
           />
 
           {!!posts.length && (
@@ -88,7 +88,13 @@ export const pageQuery = graphql`
         excerpt
         template
         subtitle
-        featuredImage
+        featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
       }
     }
 
@@ -108,7 +114,13 @@ export const pageQuery = graphql`
             categories {
               category
             }
-            featuredImage
+            featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           }
         }
       }

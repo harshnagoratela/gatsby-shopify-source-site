@@ -1,0 +1,32 @@
+---
+template: ProjectPage
+slug: rolloveroo
+client: Rolloveroo
+url: https://rolloveroo.com
+title:
+featuredImage: ../images/rolloveroo_01.jpg
+subtitle:
+tags:
+ -
+ -
+ -
+ -
+date: 2019-06-01
+section1: >-
+  ##
+
+section2:
+
+accordion:
+  - description: Wordpress, Google Analytics
+    title: Platforms & technologies
+
+gallery:
+  - alt:
+    image: ../images/
+    title:
+
+meta:
+  description:
+  title:
+---

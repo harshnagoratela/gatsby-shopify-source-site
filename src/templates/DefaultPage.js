@@ -14,10 +14,11 @@ export const DefaultPageTemplate = ({
   body
 }) => (
   <main className="DefaultPage">
+    {featuredImage && console.log(featuredImage)}
     <PageHeader
       title={title}
       subtitle={subtitle}
-      backgroundImage={featuredImage}
+      backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
     />
 
     <section className="section">
@@ -46,7 +47,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        featuredImage
+        featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
       }
     }
   }
