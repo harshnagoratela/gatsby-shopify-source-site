@@ -2,7 +2,7 @@
 template: HomePage
 slug: ''
 title: Digital commerce solutions for uncommon businesses
-featuredImage: '/images/digital-commerce-solutions.png'
+featuredImage: '../images/digital-commerce-solutions.png'
 subtitle: >-
   ### We're not a typical ecommerce development or marketing agency.
 

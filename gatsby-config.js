@@ -119,7 +119,7 @@ module.exports = {
           {
             // Use cacheFirst since these don't need to be revalidated (same RegExp
             // and same reason as above)
-            urlPattern: /(\.js$|\.css$|static\/)/,
+            urlPattern: /(\.js$|\.css$|content\/)/,
             handler: `cacheFirst`
           },
           {
@@ -148,15 +148,15 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: 'standalone',
-        icon: `${__dirname}/static/images/logo.svg` // This path is relative to the root of the site.
+        icon: `${__dirname}/content/images/logo.svg` // This path is relative to the root of the site.
       }
     },
 
-    // Add static assets before markdown files
+    // Add content assets before markdown files
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/static/images`,
+        path: `${__dirname}/content/images`,
         name: 'images'
       }
     },
