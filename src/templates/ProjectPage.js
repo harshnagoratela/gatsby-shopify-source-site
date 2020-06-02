@@ -29,7 +29,7 @@ export const ProjectsPageTemplate = ({
     <PageHeader
       title={title}
       subtitle={subtitle}
-      backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
+      backgroundImage={featuredImage}
     />
     <section className="section">
       <div className="container">
@@ -90,13 +90,7 @@ export const pageQuery = graphql`
         title
         template
         subtitle
-        featuredImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+        featuredImage
         section1
         section2
         date(formatString: "MMMM YYYY")

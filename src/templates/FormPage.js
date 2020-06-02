@@ -23,8 +23,8 @@ export const FormPageTemplate = ({
   <main className="Contact">
     <PageHeader
       title={title}
-      subtitle={subtitle} 
-      backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
+      subtitle={subtitle}
+      backgroundImage={featuredImage}
     />
     <section className="section Contact--Section1">
       <div className="container Contact--Section1--Container">
@@ -61,13 +61,7 @@ export const pageQuery = graphql`
         title
         template
         subtitle
-        featuredImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+        featuredImage
         address
         phone
         email

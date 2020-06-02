@@ -66,7 +66,7 @@ export const BlogIndexTemplate = ({
           <PageHeader
             title={title}
             subtitle={subtitle}
-            backgroundImage={featuredImage && featuredImage.childImageSharp && featuredImage.childImageSharp.fluid.src}
+            backgroundImage={featuredImage}
           />
 
           {!!postCategories.length && (
@@ -132,13 +132,7 @@ export const pageQuery = graphql`
         excerpt
         template
         subtitle
-        featuredImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+        featuredImage
       }
     }
 
@@ -158,13 +152,7 @@ export const pageQuery = graphql`
             categories {
               category
             }
-            featuredImage {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
+            featuredImage
           }
         }
       }

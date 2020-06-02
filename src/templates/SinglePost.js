@@ -17,10 +17,11 @@ export const SinglePostTemplate = ({
     prevPostURL,
     categories = []
 }) => {
+    const pageFeaturedImage = featuredImage.startsWith('http')?featuredImage:('../'+featuredImage);
     return (
         <main>
             <PageHeader
-                backgroundImage={featuredImage && featuredImage.fluid && featuredImage.fluid.src}
+                backgroundImage={pageFeaturedImage}
             />
             <article
                 className="SinglePost section light"
@@ -121,13 +122,7 @@ export const pageQuery = graphql`
         title
         template
         subtitle
-        featuredImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+        featuredImage
         date(formatString: "dddd MMMM DD, YYYY")
         categories {
           category

@@ -8,7 +8,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'ecomloop',
-    description: 'digital commerce solutions for uncommon businesses',
+    description: 'We help uncommon businesses succeed in the digital economy',
     siteUrl: 'https://ecomloop.com'
   },
   plugins: [
@@ -29,7 +29,7 @@ module.exports = {
     options: {
       folderId: '1ZUcbDFOxg7UEjyy0f-xmqf7ZGgUkM4rE',
       keyFile: `${__dirname}/client_secret.json`,
-      destination: `${__dirname}/content/images`,
+      destination: `${__dirname}/static/images`,
       exportGDocs: false,
       exportMimeType: ''
       }
@@ -119,7 +119,7 @@ module.exports = {
           {
             // Use cacheFirst since these don't need to be revalidated (same RegExp
             // and same reason as above)
-            urlPattern: /(\.js$|\.css$|content\/)/,
+            urlPattern: /(\.js$|\.css$|static\/)/,
             handler: `cacheFirst`
           },
           {
@@ -148,15 +148,15 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: 'standalone',
-        icon: `${__dirname}/content/images/logo.svg` // This path is relative to the root of the site.
+        icon: `${__dirname}/static/images/logo.svg` // This path is relative to the root of the site.
       }
     },
 
-    // Add content assets before markdown files
+    // Add static assets before markdown files
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/images`,
+        path: `${__dirname}/static/images`,
         name: 'images'
       }
     },
