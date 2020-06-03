@@ -6,6 +6,7 @@ import './PostCard.css'
 
 const PostCard = ({
   featuredImage,
+  localFeaturedImage,
   title,
   excerpt,
   date,
@@ -14,11 +15,19 @@ const PostCard = ({
   categories = [],
   className = '',
   ...props
-}) => (
+}) => {
+
+  const postImage = (featuredImage && localFeaturedImage && featuredImage.startsWith('http'))?localFeaturedImage.childImageSharp.fluid.src:featuredImage;
+  //console.log("************************")
+  //console.log(featuredImage)
+  //console.log(postImage)
+  //console.log("******************")
+
+  return (
   <Link to={slug} className={`PostCard ${className}`}>
-    {featuredImage && (
+    {postImage && (
       <div className="PostCard--Image relative">
-        <Image background src={featuredImage} alt={title} />
+        <Image background src={postImage} alt={title} />
       </div>
     )}
     <div className="PostCard--Content">
@@ -34,6 +43,6 @@ const PostCard = ({
       {excerpt && <div className="PostCard--Excerpt">{excerpt}</div>}
     </div>
   </Link>
-)
+)}
 
 export default PostCard
