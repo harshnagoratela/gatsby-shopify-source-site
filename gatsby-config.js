@@ -14,6 +14,13 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/blogimages`,
+        name: 'blogimages'
+      }
+    },
+    {
     resolve: '@fs/gatsby-plugin-drive',
     options: {
       folderId: '1xSLqG_faTddDwktmKdgD8-lxRcvgiIWT',
@@ -29,7 +36,7 @@ module.exports = {
     options: {
       folderId: '1ZUcbDFOxg7UEjyy0f-xmqf7ZGgUkM4rE',
       keyFile: `${__dirname}/client_secret.json`,
-      destination: `${__dirname}/static/images`,
+      destination: `${__dirname}/content/blogimages`,
       exportGDocs: false,
       exportMimeType: ''
       }

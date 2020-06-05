@@ -306,8 +306,14 @@ collections: # A list of collections the CMS should be able to edit
         default: ["ecomloop"]
         required: false
       - {
-          label: Featured Image,
+          label: Featured Image (use this for images from ucarecdn i.e. uploadcare),
           name: featuredImage,
+          widget: image,
+          required: false,
+        }
+      - {
+          label: Featured Image Local (use this for local images),
+          name: featuredImageLocal,
           widget: image,
           required: false,
         }

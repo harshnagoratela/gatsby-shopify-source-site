@@ -21,6 +21,10 @@
   height: 15rem;
 }
 
+ .PostCard--Image .gatsby-image-wrapper {
+     position: initial !important;
+ }
+
 .PostCard--Title {
   margin: 0;
 }
