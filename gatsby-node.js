@@ -1,17 +1,7 @@
 const _ = require('lodash')
 const path = require('path')
-const urlExists = require("url-exists");
-const { createFilePath, createRemoteFileNode } = require('gatsby-source-filesystem')
+const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  createTypes(`
-    type MarkdownRemark implements Node {
-      localFeaturedImage: File @link(from: "localFeaturedImage___NODE")
-    }
-  `)
-}
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -97,8 +87,8 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode = ({ node, store, cache, actions, createNodeId, getNode }) => {
-  const { createNodeField, createNode } = actions
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
 
   // convert frontmatter images
   fmImagesToRelative(node)
@@ -128,12 +118,6 @@ exports.onCreateNode = ({ node, store, cache, actions, createNodeId, getNode }) 
       slug = `/${parsedFilePath.dir}/`
     }
 
-    const featuredImage = node.frontmatter.featuredImage;
-    if(featuredImage && featuredImage.startsWith("http") && featuredImage != "https://ucarecdn.com/3ce1b407-7d43-413f-a45a-c0699ede8f8b/") {
-        //these are the cases to handle
-        console.log("********* "+slug+" = "+featuredImage)
-    }
-
     createNodeField({
       node,
       name: 'slug',
@@ -149,15 +133,6 @@ exports.onCreateNode = ({ node, store, cache, actions, createNodeId, getNode }) 
   }
 }
 
-function doURLPing(url) {
-    urlExists(url, function(err, exists) {
-        //console.log("+++++++++ URL = '"+url+"' = "+exists);
-        if(!exists) {
-            console.warn("---- WARNING: Ignoring URL '"+url+"' as it is not reachable");
-        }
-        return exists;
-    });
-}
 
 // Random fix for https://github.com/gatsbyjs/gatsby/issues/5700
 module.exports.resolvableExtensions = () => ['.json']

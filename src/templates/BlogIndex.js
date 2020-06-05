@@ -127,13 +127,6 @@ export const pageQuery = graphql`
       fields {
         contentType
       }
-      localFeaturedImage {
-         childImageSharp {
-            fluid {
-                src
-            }
-         }
-      }
       frontmatter {
         title
         excerpt
@@ -153,13 +146,6 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          localFeaturedImage {
-                childImageSharp {
-                    fluid {
-                        src
-                    }
-                }
-            }
           frontmatter {
             title
             date(formatString: "dddd MMMM DD, YYYY")
