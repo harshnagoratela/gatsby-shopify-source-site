@@ -39,7 +39,6 @@ export const BlogIndexTemplate = ({
   title,
   subtitle,
   featuredImage,
-  featuredImageLocal,
   posts = [],
   postCategories = [],
   enableSearch = true,
@@ -154,13 +153,6 @@ export const pageQuery = graphql`
               category
             }
             featuredImage
-            featuredImageLocal {
-              childImageSharp {
-                fluid {
-                    ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
