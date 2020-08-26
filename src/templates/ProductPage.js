@@ -100,6 +100,7 @@ const ProductPage = ({ data }) => {
                                     {filterdPostEdges.map((post, index) => (
                                       <PostCard key={index}
                                         featuredImage={`../${post.frontmatter.featuredImage}`}
+                                        localImage={post.frontmatter.localImage}
                                         title={post.frontmatter.title}
                                         excerpt={post.excerpt}
                                         date={post.frontmatter.date}
@@ -115,6 +116,7 @@ const ProductPage = ({ data }) => {
                                     {filterdProjectEdges.map((post, index) => (
                                       <PostCard key={index}
                                         featuredImage={`../${post.frontmatter.featuredImage}`}
+                                        localImage={post.frontmatter.localImage}
                                         title={post.frontmatter.title}
                                         excerpt={post.frontmatter.excerpt}
                                         date={post.frontmatter.date}
@@ -221,6 +223,13 @@ export const pageQuery = graphql`
               category
             }
             featuredImage
+            localImage {
+                childImageSharp {
+                    fluid (srcSetBreakpoints: [200, 400]) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
             tags
           }
         }
