@@ -69,7 +69,6 @@
     "start": "npm run clean && npm run develop",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "local": "gatsby develop -H 0.0.0.0 -p 3000",
     "clean": "del-cli .cache public",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
