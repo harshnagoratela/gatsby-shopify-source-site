@@ -32,7 +32,7 @@ const NewsPage = ({ data }) => {
                     <div className="PostSection">
                         <div className="PostSection--Grid">
                             {listEdges && listEdges.map(({ node }, index) => (
-                                <Link key={index} to={`/news/${_.kebabCase(node.title)}`} className="PostCard">
+                                <Link key={index} to={`/news/${_.kebabCase(node.id)}`} className="PostCard">
                                     {node.image && (
                                         <div className="PostCard--Image relative">
                                             <Image background src={node.image} alt={node.title} />
