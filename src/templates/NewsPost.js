@@ -6,47 +6,57 @@ import PostSection from '../components/PostSection'
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
-import {getRelatedPosts} from '../components/RelatedPosts'
 import './SinglePost.css'
 
 export const NewsPostTemplate = ({
+    author,
+    comment,
+    dateadded,
+    excerpt,
+    extractedkeywords,
+    highlight,
+    highlight2,
+    images,
+    image,
+    id,
+    keywords,
+    publishdate,
+    relativepopularity,
+    source,
+    source2,
+    tags,
     title,
-    featuredImage,
-    localImage,
-    date,
+    url,
     body,
     nextPostURL,
     prevPostURL,
-    categories = []
+    categories = (keywords + "," + tags).split(",")
 }) => {
-    let pageFeaturedImage = featuredImage.startsWith('http')?featuredImage:('../'+featuredImage);
-    if(localImage && localImage.childImageSharp) pageFeaturedImage = localImage.childImageSharp.fluid.src;
+    console.log(categories)
     return (
         <main>
-            <PageHeader
-                backgroundImage={pageFeaturedImage}
-            />
+            <PageHeader title={title} />
             <article
                 className="SinglePost section light"
                 itemScope
                 itemType="http://schema.org/BlogPosting"
             >
                 <div className="container skinny">
-                    <Link className="SinglePost--BackButton" to="/blog/">
+                    <Link className="SinglePost--BackButton" to="/news/">
                         <ChevronLeft /> BACK
                     </Link>
                     <div className="SinglePost--Content relative">
                         <div className="SinglePost--Meta">
-                            {date}
+                            {dateadded}
                             {categories && (
                                 <Fragment>
                                     <span> |</span>
                                     {categories.map((cat, index) => (
                                         <span
-                                            key={cat.category}
+                                            key={cat}
                                             className="SinglePost--Meta--Category"
                                         >
-                                            {cat.category}
+                                            {cat}
                                             {/* Add a comma on all but last category */}
                                             {index !== categories.length - 1 ? ',' : ''}
                                         </span>
@@ -61,8 +71,35 @@ export const NewsPostTemplate = ({
                             </h1>
                         )}
 
+                        {image && (
+                            <div className="SinglePost--InnerContent">
+                                <img src={image} title={title} width="100%"/>
+                            </div>
+                        )}
+
                         <div className="SinglePost--InnerContent">
-                            <Content source={body} />
+                            <Content source={comment} />
+                        </div>
+
+                        <div className="SinglePost--InnerContent">
+                            {author && source &&
+                                <div>From {author} at {source}</div>
+                            }
+                            {publishdate &&
+                                <div>Originally published {publishdate}</div>
+                            }
+                        </div>
+
+                        <div className="SinglePost--InnerContent">
+                            <blockquote>{highlight}</blockquote>
+                        </div>
+
+                        <div className="SinglePost--InnerContent">
+                            <blockquote>{highlight2}</blockquote>
+                        </div>
+
+                        <div className="SinglePost--Pagination">
+                            <a href={url} target="_blank">Read more &gt;</a>
                         </div>
 
                         <div className="SinglePost--Pagination">
@@ -92,19 +129,17 @@ export const NewsPostTemplate = ({
 
 // Export Default NewsPost for front-end
 const NewsPost = ({ data: { post } }) => {
-    
+
     return (
         <Layout
-            meta={post.frontmatter.meta || false}
-            description={post.excerpt || false}
-            title={post.frontmatter.title || false}
+            description={post.highlight || false}
+            title={post.title || false}
         >
             <NewsPostTemplate
                 {...post}
-                {...post.frontmatter}
-                body={post.html}
-                nextPostURL={_.get(thisEdge, 'next.id')}
-                prevPostURL={_.get(thisEdge, 'previous.id')}
+                body={post.text}
+                nextPostURL={_.get(post, 'next.id')}
+                prevPostURL={_.get(post, 'previous.id')}
             />
         </Layout>
     )
