@@ -30,7 +30,7 @@ export const NewsPostTemplate = ({
     body,
     nextPostURL,
     prevPostURL,
-    categories = (keywords + "," + tags).split(",")
+    categories = (extractedkeywords + "," + tags).split(",")
 }) => {
     console.log(categories)
     return (
@@ -47,22 +47,8 @@ export const NewsPostTemplate = ({
                     </Link>
                     <div className="SinglePost--Content relative">
                         <div className="SinglePost--Meta">
-                            {dateadded}
-                            {categories && (
-                                <Fragment>
-                                    <span> |</span>
-                                    {categories.map((cat, index) => (
-                                        <span
-                                            key={cat}
-                                            className="SinglePost--Meta--Category"
-                                        >
-                                            {cat}
-                                            {/* Add a comma on all but last category */}
-                                            {index !== categories.length - 1 ? ',' : ''}
-                                        </span>
-                                    ))}
-                                </Fragment>
-                            )}
+                            Posted: {dateadded} <br/>
+
                         </div>
 
                         {title && (
@@ -99,9 +85,24 @@ export const NewsPostTemplate = ({
                         </div>
 
                         <div className="SinglePost--Pagination">
-                            <a href={url} target="_blank">Read more &gt;</a>
+                            <button href={url} target="_blank" class="Nav--CTA animated jello fadeInDown delay-4s">Read the original post &gt;</button>
                         </div>
-
+                        <br/>
+                        {categories && (
+                            <Fragment>
+                              <i>Tags:
+                                {categories.map((cat, index) => (
+                                    <span
+                                        key={cat}
+                                        className="SinglePost--Meta--Category"
+                                    >
+                                        {cat}
+                                        {/* Add a comma on all but last category */}
+                                        {index !== categories.length - 1 ? ',' : ''}
+                                    </span>
+                                ))}</i>
+                            </Fragment>
+                        )}
                         <div className="SinglePost--Pagination">
                             {prevPostURL && (
                                 <Link
@@ -157,7 +158,6 @@ export const pageQuery = graphql`
       articleid
       author
       comment
-      d415A
       dateadded
       excerpt
       extractedkeywords
@@ -174,7 +174,7 @@ export const pageQuery = graphql`
       tags
       text
       title
-      url 
+      url
     }
   }
 `
