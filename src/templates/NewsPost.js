@@ -6,6 +6,7 @@ import PostSection from '../components/PostSection'
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
+import {getRelatedNews} from '../components/RelatedNews'
 import './SinglePost.css'
 
 export const NewsPostTemplate = ({
@@ -135,18 +136,22 @@ export const NewsPostTemplate = ({
 }
 
 // Export Default NewsPost for front-end
-const NewsPost = ({ data: { post } }) => {
+const NewsPost = ({ data: { news, allNews } }) => {
+    console.log("**********")
+    console.log(news)
+    const relatedNews = getRelatedNews(news, allNews.edges);
+    console.log("++++++ relatedNews ",relatedNews)
 
     return (
         <Layout
-            description={post.highlight || false}
-            title={post.title || false}
+            description={news.highlight || false}
+            title={news.title || false}
         >
             <NewsPostTemplate
-                {...post}
-                body={post.text}
-                nextPostURL={_.get(post, 'next.id')}
-                prevPostURL={_.get(post, 'previous.id')}
+                {...news}
+                body={news.text}
+                nextPostURL={_.get(news, 'next.id')}
+                prevPostURL={_.get(news, 'previous.id')}
             />
         </Layout>
     )
@@ -160,7 +165,7 @@ export const pageQuery = graphql`
   ## $id is processed via gatsby-node.js
   ## query name must be unique to this file
   query NewsPost($id: String!) {
-    post: googleSheetListRow(id: { eq: $id }) {
+    news: googleSheetListRow(id: { eq: $id }) {
       articleid
       author
       comment
@@ -182,6 +187,34 @@ export const pageQuery = graphql`
       text
       title
       url
+    }
+    
+    allNews : allGoogleSheetListRow (sort: {fields: dateadded, order: DESC}) {
+      edges {
+        node {
+          articleid
+          author
+          comment
+          dateadded
+          excerpt
+          extractedkeywords
+          headerimage
+          highlight
+          highlight2
+          images
+          image
+          id
+          keywords
+          publishdate
+          relativepopularity
+          source
+          source2
+          tags
+          text
+          title
+          url
+        }
+      }
     }
   }
 `
