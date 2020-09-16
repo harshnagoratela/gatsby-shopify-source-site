@@ -5,6 +5,7 @@ import { ChevronLeft } from 'react-feather'
 import PostSection from '../components/PostSection'
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
+import Image from '../components/Image'
 import Layout from '../components/Layout'
 import {getRelatedNews} from '../components/RelatedNews'
 import './SinglePost.css'
@@ -33,11 +34,12 @@ export const NewsPostTemplate = ({
     nextPostURL,
     articleid,
     prevPostURL,
+    relatedNews,
     categories = (extractedkeywords + "," + tags + "," + keywords).split(",")
 }) => {
     //filter out null, and all tags beginning with *
     categories = _.filter(categories, tag => tag!="null" && !tag.startsWith("*"))
-    //console.log("********** categories ", categories)
+    console.log("********** relatedNews (in display) ", relatedNews)
     return (
         <main>
             <PageHeader title={title} backgroundImage={'https://source.unsplash.com/1600x900/?abstract.'+ articleid} />
@@ -110,6 +112,24 @@ export const NewsPostTemplate = ({
                                 ))}</i>
                             </Fragment>
                         )}
+                        {relatedNews && relatedNews.length>0 &&
+                            <h2 style={{marginTop: "2rem"}}>Related News</h2>
+                        }
+                        <div className="PostSection">
+                            <div className="PostSection--Grid">
+                                {relatedNews && relatedNews.map(({ news }, index) => (
+                                    <Link key={index} to={`/news/${news.node.articleid}`} className="PostCard">
+                                        <div className="PostCard--Image relative">
+                                            <Image background src={'https://source.unsplash.com/1600x900/?abstract.'+ news.node.articleid} alt={news.node.title} />
+                                        </div>
+                                        <div className="PostCard--Content">
+                                            {news.node.title && <h3 className="PostCard--Title">{news.node.title}</h3>}
+                                            {news.node.comment && <div className="PostCard--Excerpt">{news.node.comment}</div>}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
                         <div className="SinglePost--Pagination">
                             {prevPostURL && (
                                 <Link
@@ -137,8 +157,6 @@ export const NewsPostTemplate = ({
 
 // Export Default NewsPost for front-end
 const NewsPost = ({ data: { news, allNews } }) => {
-    console.log("**********")
-    console.log(news)
     const relatedNews = getRelatedNews(news, allNews.edges);
     console.log("++++++ relatedNews ",relatedNews)
 
@@ -152,6 +170,7 @@ const NewsPost = ({ data: { news, allNews } }) => {
                 body={news.text}
                 nextPostURL={_.get(news, 'next.id')}
                 prevPostURL={_.get(news, 'previous.id')}
+                relatedNews={relatedNews}
             />
         </Layout>
     )
