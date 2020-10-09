@@ -19,26 +19,26 @@ const NewsPage = ({location, data }) => {
     const increaseLimit = () => {
         setLimit(limit + maxItems);
     }
-    
+
     React.useEffect(() => {
       //checking if tag filter is present
       if(location && location.search) {
         const { tag } = queryString.parse(location.search);
-        setFilter(tag.trim())      
+        setFilter(tag.trim())
       }
     },[]);
-    
-    let filterEdges = edges;    
+
+    let filterEdges = edges;
     //apply filtertext if its greater than 3 characters
     if(filter && filter.length>3){
-      filterEdges = _.filter(edges, ({node}) => (node.title && node.title.indexOf(filter)>=0) || (node.extractedkeywords && node.extractedkeywords.indexOf(filter)>=0) || (node.tags && node.tags.indexOf(filter)>=0) || (node.keywords && node.keywords.indexOf(filter)>=0) )      
+      filterEdges = _.filter(edges, ({node}) => (node.title && node.title.indexOf(filter)>=0) || (node.extractedkeywords && node.extractedkeywords.indexOf(filter)>=0) || (node.tags && node.tags.indexOf(filter)>=0) || (node.keywords && node.keywords.indexOf(filter)>=0) )
     }
 
     //Now limiting the items as per limit
     const listEdges = _.slice(filterEdges, 0, limit)
 
     return (
-        <Layout title="ecommerce news" description="" >
+        <Layout title="ecommerce news" description="ecommerce news for uncommon digial commerce brands" >
             <PageHeader
                 title="ecommerce news"
                 subtitle="for uncommon digital commerce brands"
@@ -68,8 +68,10 @@ const NewsPage = ({location, data }) => {
                                         </div>
 
                                     <div className="PostCard--Content">
-                                        {node.title && <h3 className="PostCard--Title">{node.title}</h3>}
-                                        {node.comment && <div className="PostCard--Excerpt">{node.comment}</div>}
+                                        {node.title && <h3 className="PostCard--Title">{node.title.substring(0,50)}</h3>}
+                                        {node.source && <em className="PostCard--Source">Source: {node.source.substring(0,28)}<br/></em>}
+                                        {node.source && <em className="PostCard--Date">Date: {node.publishdate}<br/></em>}
+                                        {node.highlight && <div className="PostCard--Excerpt"><br/>{node.highlight.substring(0,280)}</div>}
                                     </div>
                                 </Link>
                             ))}
