@@ -25,7 +25,9 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then(result => {
+
     if (result.errors) {
+
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
     }
@@ -84,34 +86,7 @@ exports.createPages = ({ actions, graphql }) => {
         })
         })
 
-        //Creating News Pages
-        return graphql(`
-          {
-            allGoogleSheetListRow {
-              edges {
-                node {
-                  id
-                  articleid
-                  title
-                }
-              }
-            }
-          }
-        `).then(result => {
-            console.log(`Creating ${result.data.allGoogleSheetListRow.edges.length} News Posts`)
-            result.data.allGoogleSheetListRow.edges.forEach(({ node }) => {
-              createPage({
-                  path: `/news/${node.articleid}/`,
-                  //path: `/news/${node.id}/`,
-                  component: path.resolve(`./src/templates/NewsPost.js`),
-                  context: {
-                    // Data passed to context is available
-                    // in page queries as GraphQL variables.
-                    id: node.id,
-                  },
-              })
-            })
-        })
+      
     })
 
   })
@@ -127,6 +102,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // https://github.com/Vagr9K/gatsby-advanced-starter/blob/master/gatsby-node.js
   let slug
   if (node.internal.type === 'MarkdownRemark') {
+
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
 
