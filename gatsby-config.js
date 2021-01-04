@@ -73,7 +73,7 @@ module.exports = {
         verbose: true,
         enableWebp: false,
       },
-    },/*
+    },
     {
     resolve: 'gatsby-source-google-sheets',
     options: {
@@ -83,7 +83,7 @@ module.exports = {
 
       }
 
-    },*/
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
